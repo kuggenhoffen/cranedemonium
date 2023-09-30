@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2dkvcjvi75s0"]
+
+[ext_resource type="Script" path="res://Scripts/ContainerObject.gd" id="1_3g4xw"]
+[ext_resource type="Material" uid="uid://ci45t6w2j7g3w" path="res://Materials/m_container.tres" id="2_82f0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwj3n"]
+size = Vector3(5, 5, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_561xf"]
+radius = 1.0
+height = 3.0
+
+[node name="Container" type="Node3D" node_paths=PackedStringArray("anchor_proxies")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("1_3g4xw")
+anchor_proxies = [NodePath("RigidBody3D/Anchor1"), NodePath("RigidBody3D/Anchor2"), NodePath("RigidBody3D/Anchor3"), NodePath("RigidBody3D/Anchor4")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 100.0
+continuous_cd = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="RigidBody3D"]
+material_override = ExtResource("2_82f0u")
+size = Vector3(5, 5, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_jwj3n")
+
+[node name="Decal" type="Decal" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 0.446, 0, -1, 0, -4.37114e-08, 0, 2.64226, 0)
+size = Vector3(9, 2, 9)
+
+[node name="Anchor1" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, -5)
+
+[node name="Anchor2" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -5)
+
+[node name="Anchor3" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.5, 5)
+
+[node name="Anchor4" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 5)
+
+[node name="AreaAttach" type="Area3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13894, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/AreaAttach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187459, 0)
+shape = SubResource("CapsuleShape3D_561xf")
+
+[connection signal="body_entered" from="RigidBody3D/AreaAttach" to="." method="_on_area_attach_body_entered"]
+[connection signal="body_exited" from="RigidBody3D/AreaAttach" to="." method="_on_area_attach_body_exited"]

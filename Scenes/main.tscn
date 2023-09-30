@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1qdmmfjl04ws"]
+
+[ext_resource type="Material" uid="uid://cnnkgr7dtg04q" path="res://Materials/m_concrete.tres" id="1_uhvgl"]
+[ext_resource type="Script" path="res://Scripts/CraneController.gd" id="4_16b5t"]
+[ext_resource type="Script" path="res://Scripts/TextRenderViewport.gd" id="4_63a7v"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_g02qa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_270xn"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+ground_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+
+[sub_resource type="Sky" id="Sky_rvy5t"]
+sky_material = SubResource("ProceduralSkyMaterial_270xn")
+
+[sub_resource type="Environment" id="Environment_3ove3"]
+background_mode = 2
+sky = SubResource("Sky_rvy5t")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekssd"]
+font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_ck8cc"]
+offsets = PackedFloat32Array(0.297826, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s27p3"]
+gradient = SubResource("Gradient_ck8cc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.858974, 0.824786)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifv85"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pyycy"]
+size = Vector3(50, 0.5, 50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ove3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.829028, 0.559207, 0, -0.559207, 0.829028, 0, 19.9092, 21.4113)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.737466, 0.384104, -0.555525, 0, 0.822531, 0.56872, 0.675384, -0.419412, 0.606589, -11.7323, 15, 10)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("5_g02qa")
+
+[node name="TextRenderer" type="SubViewport" parent="GameManager"]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 0
+script = ExtResource("4_63a7v")
+
+[node name="Label" type="Label" parent="GameManager/TextRenderer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(128, 128)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "ABBA"
+label_settings = SubResource("LabelSettings_ekssd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crane" type="Node3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.709, 0)
+script = ExtResource("4_16b5t")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="GameManager/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+visible = false
+
+[node name="Decal" type="Decal" parent="GameManager/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.13253, 0)
+size = Vector3(2, 31.9453, 2)
+texture_albedo = SubResource("GradientTexture2D_s27p3")
+albedo_mix = 0.5
+upper_fade = 0.0891906
+
+[node name="CraneRoot" type="RigidBody3D" parent="GameManager/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3162, 0)
+collision_layer = 3
+mass = 200.0
+gravity_scale = 0.0
+freeze_mode = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="GameManager/Crane/CraneRoot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Crane/CraneRoot"]
+shape = SubResource("BoxShape3D_ifv85")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="GameManager/Crane"]
+node_a = NodePath("../CraneRoot")
+linear_limit_y/lower_distance = -3.0
+angular_spring_x/damping = 0.22
+angular_spring_z/damping = 0.22
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+material_override = ExtResource("1_uhvgl")
+use_collision = true
+size = Vector3(50, 0.5, 50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_pyycy")
+
+[connection signal="body_entered" from="GameManager/Crane/CraneRoot" to="GameManager/Crane" method="_on_crane_root_body_entered"]
+[connection signal="body_exited" from="GameManager/Crane/CraneRoot" to="GameManager/Crane" method="_on_crane_root_body_exited"]

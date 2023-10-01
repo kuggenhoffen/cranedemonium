@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctnu8q0afqbh8"]
+
+[ext_resource type="Texture2D" uid="uid://cshjhkvxrlwkn" path="res://Textures/logo.png" id="1_fiw5e"]
+[ext_resource type="Script" path="res://Scripts/PauseHandler.gd" id="1_mdfg5"]
+[ext_resource type="Script" path="res://Scripts/RuntimeMenuUI.gd" id="2_rw6eq"]
+[ext_resource type="Script" path="res://Scripts/MenuUINode.gd" id="3_b8o0h"]
+[ext_resource type="FontVariation" uid="uid://cis2ryintpk44" path="res://Styles/button_font_variation.tres" id="5_88vto"]
+[ext_resource type="StyleBox" uid="uid://gjmjbuo2je5x" path="res://Styles/empty_box.tres" id="6_hokkw"]
+
+[node name="RuntimeMenu" type="Node"]
+process_mode = 3
+script = ExtResource("1_mdfg5")
+
+[node name="RuntimeMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="RuntimeMenuUI"]
+custom_minimum_size = Vector2(1024, 512)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 155.0
+offset_right = 512.0
+offset_bottom = 667.0
+grow_horizontal = 2
+texture = ExtResource("1_fiw5e")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Node" type="Node" parent="RuntimeMenuUI"]
+script = ExtResource("2_rw6eq")
+
+[node name="PauseMenuNode" type="Node" parent="RuntimeMenuUI/Node" node_paths=PackedStringArray("focus_control")]
+script = ExtResource("3_b8o0h")
+focus_control = NodePath("RuntimeMenu/BtnResume")
+
+[node name="RuntimeMenu" type="BoxContainer" parent="RuntimeMenuUI/Node/PauseMenuNode"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.5
+offset_top = 608.0
+offset_right = 390.5
+offset_bottom = 817.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="BtnBackToMainMenu" type="Button" parent="RuntimeMenuUI/Node/PauseMenuNode/RuntimeMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnResume")
+focus_neighbor_top = NodePath("../BtnResume")
+focus_neighbor_right = NodePath("../BtnRestart")
+focus_neighbor_bottom = NodePath("../BtnRestart")
+focus_next = NodePath("../BtnRestart")
+focus_previous = NodePath("../BtnResume")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("5_88vto")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("6_hokkw")
+theme_override_styles/hover = ExtResource("6_hokkw")
+theme_override_styles/pressed = ExtResource("6_hokkw")
+theme_override_styles/disabled = ExtResource("6_hokkw")
+theme_override_styles/focus = ExtResource("6_hokkw")
+text = "Back to menu"
+
+[node name="BtnRestart" type="Button" parent="RuntimeMenuUI/Node/PauseMenuNode/RuntimeMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnBackToMainMenu")
+focus_neighbor_top = NodePath("../BtnBackToMainMenu")
+focus_neighbor_right = NodePath("../BtnResume")
+focus_neighbor_bottom = NodePath("../BtnResume")
+focus_next = NodePath("../BtnResume")
+focus_previous = NodePath("../BtnBackToMainMenu")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("5_88vto")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("6_hokkw")
+theme_override_styles/hover = ExtResource("6_hokkw")
+theme_override_styles/pressed = ExtResource("6_hokkw")
+theme_override_styles/disabled = ExtResource("6_hokkw")
+theme_override_styles/focus = ExtResource("6_hokkw")
+text = "Restart"
+
+[node name="BtnResume" type="Button" parent="RuntimeMenuUI/Node/PauseMenuNode/RuntimeMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnRestart")
+focus_neighbor_top = NodePath("../BtnRestart")
+focus_neighbor_right = NodePath("../BtnBackToMainMenu")
+focus_neighbor_bottom = NodePath("../BtnBackToMainMenu")
+focus_next = NodePath("../BtnBackToMainMenu")
+focus_previous = NodePath("../BtnRestart")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.956863, 0.807843, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("5_88vto")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("6_hokkw")
+theme_override_styles/hover = ExtResource("6_hokkw")
+theme_override_styles/pressed = ExtResource("6_hokkw")
+theme_override_styles/disabled = ExtResource("6_hokkw")
+theme_override_styles/focus = ExtResource("6_hokkw")
+text = "Resume"
+
+[node name="Label" type="Label" parent="RuntimeMenuUI/Node/PauseMenuNode"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -163.0
+offset_top = 486.0
+offset_right = 163.0
+offset_bottom = 594.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.980392, 0.823529, 0.137255, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.223529, 0.0941176, 0.0705882, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 25
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_88vto")
+theme_override_font_sizes/font_size = 80
+text = "Paused"
+horizontal_alignment = 1

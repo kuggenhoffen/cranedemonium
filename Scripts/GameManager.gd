@@ -11,11 +11,6 @@ extends Node
 @onready var goal_left = $Arena/GoalLeft
 
 
-var levels: Array[PackedScene] = [
-	preload("res://Prefabs/LevelBatches/batch1.tscn"),
-	preload("res://Prefabs/LevelBatches/batch2.tscn")
-];
-
 const goal_update_time: float = 15.0;
 
 enum Target {LEFT_HOLE, RIGHT_HOLE};
@@ -48,11 +43,16 @@ var timer = Timer.new();
 func _ready():
 	camera_3d.set_target(crane.crane_root);
 	lift.reset();
-	load_level(levels[0]);
+	#load_level(levels[0]);
 	lift.lift_animation_finished.connect(on_lift_finished);
 	goal_left.body_entered.connect(func(body): on_body_entered_goal(body, Target.LEFT_HOLE));
 	goal_right.body_entered.connect(func(body): on_body_entered_goal(body, Target.RIGHT_HOLE));
 
+func load_level_path(path: String):
+	print("Load level from path %s" % path);
+	var level_to_load: PackedScene = ResourceLoader.load(path);
+	load_level(level_to_load);
+	
 func load_level(new_level: PackedScene):
 	if current_level_batch != null:
 		current_level_batch.queue_free();
@@ -65,10 +65,7 @@ func load_level(new_level: PackedScene):
 	current_level_batch.global_position = lift.batch_proxy.global_position;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("esc"):
-		pass
-	
+func _process(delta):	
 	if input_enabled && Input.is_action_just_pressed("primary"):
 		if current_container != null && attached_container == null:
 			attached_container = current_container;

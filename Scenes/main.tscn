@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1qdmmfjl04ws"]
+[gd_scene load_steps=30 format=3 uid="uid://b1qdmmfjl04ws"]
 
 [ext_resource type="Material" uid="uid://cnnkgr7dtg04q" path="res://Materials/m_concrete.tres" id="1_uhvgl"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_0s1hy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dduuapakgaeg6" path="res://Prefabs/ticker.tscn" id="7_oei1p"]
 [ext_resource type="Script" path="res://Scripts/GoalArea.gd" id="8_a6web"]
 [ext_resource type="Script" path="res://Scripts/CollisionConveyor.gd" id="8_ywqse"]
+[ext_resource type="PackedScene" uid="uid://ctnu8q0afqbh8" path="res://Scenes/runtime_menu.tscn" id="11_lxhnx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_270xn"]
 sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -330,6 +331,8 @@ text = "ABBA"
 label_settings = SubResource("LabelSettings_ekssd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RuntimeMenu" parent="." instance=ExtResource("11_lxhnx")]
 
 [connection signal="child_entered_tree" from="GameManager" to="GameManager" method="_on_child_entered_tree"]
 [connection signal="body_entered" from="GameManager/Crane/CraneRoot" to="GameManager/Crane" method="_on_crane_root_body_entered"]

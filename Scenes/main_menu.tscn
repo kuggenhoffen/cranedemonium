@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://equvccqsr0cj"]
+
+[ext_resource type="Texture2D" uid="uid://cshjhkvxrlwkn" path="res://Textures/logo.png" id="1_keby0"]
+[ext_resource type="Script" path="res://Scripts/MainMenuUI.gd" id="1_mqcfq"]
+[ext_resource type="StyleBox" uid="uid://gjmjbuo2je5x" path="res://Styles/empty_box.tres" id="2_7tuua"]
+
+[sub_resource type="FontVariation" id="FontVariation_agruy"]
+variation_embolden = 0.75
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_mqcfq")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI"]
+custom_minimum_size = Vector2(1024, 512)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_top = 155.0
+offset_right = 512.0
+offset_bottom = 667.0
+grow_horizontal = 2
+texture = ExtResource("1_keby0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_top = 532.0
+offset_right = 60.5
+offset_bottom = 677.0
+grow_horizontal = 2
+vertical = true
+
+[node name="BtnStart" type="Button" parent="MainMenuUI/BoxContainer"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../BtnOptions")
+focus_neighbor_bottom = NodePath("../BtnOptions")
+focus_next = NodePath("../BtnOptions")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_agruy")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_7tuua")
+theme_override_styles/hover = ExtResource("2_7tuua")
+theme_override_styles/pressed = ExtResource("2_7tuua")
+theme_override_styles/disabled = ExtResource("2_7tuua")
+theme_override_styles/focus = ExtResource("2_7tuua")
+text = "Start"
+
+[node name="BtnOptions" type="Button" parent="MainMenuUI/BoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnStart")
+focus_neighbor_top = NodePath("../BtnStart")
+focus_neighbor_right = NodePath("../BtnQuit")
+focus_neighbor_bottom = NodePath("../BtnQuit")
+focus_next = NodePath("../BtnQuit")
+focus_previous = NodePath("../BtnStart")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_agruy")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_7tuua")
+theme_override_styles/hover = ExtResource("2_7tuua")
+theme_override_styles/pressed = ExtResource("2_7tuua")
+theme_override_styles/disabled = ExtResource("2_7tuua")
+theme_override_styles/focus = ExtResource("2_7tuua")
+text = "Options"
+
+[node name="BtnQuit" type="Button" parent="MainMenuUI/BoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../BtnOptions")
+focus_neighbor_top = NodePath("../BtnOptions")
+focus_previous = NodePath("../BtnOptions")
+theme_override_colors/font_color = Color(0.996078, 0.878431, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_focus_color = Color(0.996078, 0.921569, 0.643137, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.224447, 0.0921604, 0.0715135, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_agruy")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_7tuua")
+theme_override_styles/hover = ExtResource("2_7tuua")
+theme_override_styles/pressed = ExtResource("2_7tuua")
+theme_override_styles/disabled = ExtResource("2_7tuua")
+theme_override_styles/focus = ExtResource("2_7tuua")
+text = "Quit"

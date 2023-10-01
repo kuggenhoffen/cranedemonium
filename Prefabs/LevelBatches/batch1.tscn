@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csifiectfawht"]
+
+[ext_resource type="Script" path="res://Scripts/Batch.gd" id="1_rvsrn"]
+[ext_resource type="PackedScene" uid="uid://b2dkvcjvi75s0" path="res://Prefabs/container.tscn" id="2_x0ckt"]
+
+[node name="Batch" type="Node3D"]
+script = ExtResource("1_rvsrn")
+
+[node name="Container4" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_x0ckt")]
+transform = Transform3D(-0.511068, 0, -0.85954, 0, 1, 0, 0.85954, 0, -0.511068, -3.97864, 2.50605, 3.15524)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container5" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_x0ckt")]
+transform = Transform3D(0.111209, 0, -0.993797, 0, 1, 0, 0.993797, 0, 0.111209, 2.67275, 2.50605, -3.58111)
+anchor_proxies = [null, null, null, null]

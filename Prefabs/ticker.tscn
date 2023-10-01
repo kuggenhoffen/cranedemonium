@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dduuapakgaeg6"]
+
+[ext_resource type="Script" path="res://Scripts/Ticker.gd" id="1_jpow1"]
+
+[sub_resource type="SystemFont" id="SystemFont_rac75"]
+font_names = PackedStringArray("Consolas")
+subpixel_positioning = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_liovo"]
+albedo_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="Ticker" type="Node3D"]
+script = ExtResource("1_jpow1")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66982, 2.83514, 0.096798)
+pixel_size = 0.0361
+text = "ABBA✓
+ACDC✗
+1337
+0AO1
+ +5"
+font = SubResource("SystemFont_rac75")
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
+uppercase = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_liovo")
+size = Vector3(4, 6, 0.1)

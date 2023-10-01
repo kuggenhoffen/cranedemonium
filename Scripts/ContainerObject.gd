@@ -1,3 +1,4 @@
+class_name ContainerObject
 extends Node3D
 
 @onready var rigid_body_3d = $RigidBody3D
@@ -7,18 +8,28 @@ var id_texture: ImageTexture;
 var identifier: String;
 
 var crane: Node3D;
+var container_factory: Node;
 
 @export
 var anchor_proxies: Array[Node3D];
 
 signal entered_attach_area(container);
 signal exited_attach_area(container);
+signal initialized(container);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if id_texture != null:
-		decal.texture_albedo = id_texture;
+	container_factory = get_tree().root.get_node("main/ContainerFactory");
+	if container_factory != null:
+		container_factory.request_id_and_texture(self);
+	rigid_body_3d.container = self;
 		
+func set_id_and_texture(id: String, tex: ImageTexture):
+	id_texture = tex;
+	identifier = id;
+	decal.texture_albedo = id_texture;
+	initialized.emit(self);
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -35,10 +46,6 @@ func _physics_process(delta):
 				print("idle");
 			rigid_body_3d.apply_force(Vector3.UP * -2.5)
 				
-func set_data(tex: ImageTexture, id: String):
-	id_texture = tex;
-	identifier = id;
-
 func _on_area_attach_body_entered(body: PhysicsBody3D):
 	entered_attach_area.emit(self);
 
@@ -50,3 +57,4 @@ func attach(target: Node3D):
 
 func detach(target: Node3D):
 	pass
+

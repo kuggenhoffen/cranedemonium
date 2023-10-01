@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1qdmmfjl04ws"]
+[gd_scene load_steps=26 format=3 uid="uid://b1qdmmfjl04ws"]
 
 [ext_resource type="Material" uid="uid://cnnkgr7dtg04q" path="res://Materials/m_concrete.tres" id="1_uhvgl"]
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_0s1hy"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_g02qa"]
 [ext_resource type="Script" path="res://Scripts/ContainerFactory.gd" id="6_3cpq6"]
 [ext_resource type="Script" path="res://Scripts/Lift.gd" id="7_3bpxj"]
-[ext_resource type="PackedScene" uid="uid://dduuapakgaeg6" path="res://Prefabs/ticker.tscn" id="7_oei1p"]
-[ext_resource type="Script" path="res://Scripts/GoalArea.gd" id="8_a6web"]
 [ext_resource type="Script" path="res://Scripts/CollisionConveyor.gd" id="8_ywqse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_270xn"]
@@ -45,21 +43,6 @@ size = Vector3(100, 0.5, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6w4t"]
 size = Vector3(24, 0.5, 24)
 
-[sub_resource type="Animation" id="Animation_vsppl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -18, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_eps7u"]
 resource_name = "lift_up"
 length = 5.0
@@ -91,6 +74,21 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_vsppl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -18, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_js51p"]
 _data = {
 "RESET": SubResource("Animation_vsppl"),
@@ -106,11 +104,8 @@ albedo_color = Color(0.298039, 0.298039, 0.298039, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wji4"]
 size = Vector3(100, 1.25, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_516i4"]
-size = Vector3(16.1717, 12.364, 11.0681)
-
 [sub_resource type="SystemFont" id="SystemFont_5kfdq"]
-font_names = PackedStringArray("Consolas")
+font_names = PackedStringArray("Lucida Sans Typewriter")
 font_weight = 700
 
 [sub_resource type="LabelSettings" id="LabelSettings_ekssd"]
@@ -131,6 +126,10 @@ script = ExtResource("5_g02qa")
 [node name="Crane" type="Node3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.709, 0)
 script = ExtResource("4_16b5t")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="GameManager/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+visible = false
 
 [node name="Decal" type="Decal" parent="GameManager/Crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.13253, 0)
@@ -202,22 +201,22 @@ visible = false
 shape = SubResource("BoxShape3D_pyycy")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="GameManager/Arena/Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 3.9, -21.583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1989, 3.9, -21.583)
 use_collision = true
 size = Vector3(12, 7.5, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="GameManager/Arena/Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9, -21.583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72401, 3.9, -21.5829)
 use_collision = true
 size = Vector3(35.1391, 7.5, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="GameManager/Arena/Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.4, -21.583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72401, 11.4, -21.5829)
 use_collision = true
 size = Vector3(73.6631, 7.5, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="GameManager/Arena/Static"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 3.9, -21.583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5466, 3.9, -21.5829)
 use_collision = true
 size = Vector3(12, 7.5, 1)
 
@@ -248,7 +247,7 @@ libraries = {
 }
 
 [node name="OutputConveyor" type="Node3D" parent="GameManager/Arena"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.2614, 3.8147e-06, -1.04024)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.6366, 3.8147e-06, -1.04024)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="GameManager/Arena/OutputConveyor"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -267,7 +266,7 @@ size = Vector3(100, 1, 7)
 shape = SubResource("BoxShape3D_6wji4")
 
 [node name="OutputConveyor2" type="Node3D" parent="GameManager/Arena"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21.2713, 0, -0.585512)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.9722, 0, -0.585512)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="GameManager/Arena/OutputConveyor2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -284,28 +283,6 @@ size = Vector3(100, 1, 7)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Arena/OutputConveyor2/RigidBody3D"]
 shape = SubResource("BoxShape3D_6wji4")
-
-[node name="TickerLeft" parent="GameManager/Arena" instance=ExtResource("7_oei1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 11, -20.783)
-
-[node name="TickerRight" parent="GameManager/Arena" instance=ExtResource("7_oei1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 11, -20.783)
-
-[node name="GoalRight" type="Area3D" parent="GameManager/Arena"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5679, 0, -42.4146)
-script = ExtResource("8_a6web")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Arena/GoalRight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143246, 0, -6.11475)
-shape = SubResource("BoxShape3D_516i4")
-
-[node name="GoalLeft" type="Area3D" parent="GameManager/Arena"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4321, 0, -42.4146)
-script = ExtResource("8_a6web")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Arena/GoalLeft"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143246, 0, -6.11475)
-shape = SubResource("BoxShape3D_516i4")
 
 [node name="ContainerFactory" type="Node" parent="."]
 script = ExtResource("6_3cpq6")

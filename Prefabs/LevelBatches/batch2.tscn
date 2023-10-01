@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5lohh52j441"]
+
+[ext_resource type="Script" path="res://Scripts/Batch.gd" id="1_j7pfy"]
+[ext_resource type="PackedScene" uid="uid://b2dkvcjvi75s0" path="res://Prefabs/container.tscn" id="2_4xqlf"]
+
+[node name="Batch" type="Node3D"]
+script = ExtResource("1_j7pfy")
+
+[node name="Container" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49648, 2.50605, 5.00043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container2" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49648, 2.50605, 5.00043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container4" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49648, 2.50605, -4.99957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container5" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49648, 2.50605, -4.99957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container6" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50352, 2.50605, 5.00043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container7" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50352, 2.50605, 5.00043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container8" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50352, 2.50605, -4.99957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container9" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50352, 2.50605, -4.99957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container10" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00352, 7.50605, 7.50043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container11" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00352, 7.50605, 2.50043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container12" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.99648, 7.50605, 7.50043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container13" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.99648, 7.50605, 2.50043)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container14" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00352, 7.50605, -2.49957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container15" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00352, 7.50605, -7.49957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container16" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.99648, 7.50605, -2.49957)
+anchor_proxies = [null, null, null, null]
+
+[node name="Container17" parent="." node_paths=PackedStringArray("anchor_proxies") instance=ExtResource("2_4xqlf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.99648, 7.50605, -7.49957)
+anchor_proxies = [null, null, null, null]

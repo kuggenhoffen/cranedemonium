@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dolw37vnydqb"]
+[gd_scene load_steps=9 format=3 uid="uid://dolw37vnydqb"]
 
 [ext_resource type="Texture2D" uid="uid://cshjhkvxrlwkn" path="res://Textures/logo.png" id="1_keby0"]
 [ext_resource type="Script" path="res://Scripts/MainMenuUI.gd" id="1_mqcfq"]
@@ -6,6 +6,17 @@
 [ext_resource type="FontVariation" uid="uid://cis2ryintpk44" path="res://Styles/button_font_variation.tres" id="3_0wkyy"]
 [ext_resource type="Script" path="res://Scripts/LevelSelectUI.gd" id="5_sxcro"]
 [ext_resource type="Script" path="res://Scripts/MenuUINode.gd" id="6_de345"]
+
+[sub_resource type="Gradient" id="Gradient_sg56b"]
+offsets = PackedFloat32Array(0, 0.363043, 1)
+colors = PackedColorArray(0, 0, 0, 0.501961, 0.230315, 0.230315, 0.230315, 0.404842, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t7ny8"]
+gradient = SubResource("Gradient_sg56b")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="MainMenu" type="Node3D"]
 
@@ -112,9 +123,33 @@ item_count = 2
 item_0/text = "Level 1 | -:--:--"
 item_1/text = "Level 2 | -:--:--"
 
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI/Node/LevelSelectNode"]
+z_index = -5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1407.0
+offset_top = -348.0
+offset_right = 1407.0
+offset_bottom = 1476.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_t7ny8")
+
 [node name="MainMenuNode" type="Node" parent="MainMenuUI/Node" node_paths=PackedStringArray("focus_control")]
 script = ExtResource("6_de345")
 focus_control = NodePath("MainMenu/BtnStart")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI/Node/MainMenuNode"]
+z_index = -5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1407.0
+offset_top = -348.0
+offset_right = 1407.0
+offset_bottom = 1476.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture2D_t7ny8")
 
 [node name="MainMenu" type="BoxContainer" parent="MainMenuUI/Node/MainMenuNode"]
 anchors_preset = 5

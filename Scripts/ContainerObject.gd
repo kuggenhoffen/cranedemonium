@@ -36,14 +36,10 @@ func _process(delta):
 	
 func _physics_process(delta):
 	if crane != null && false:
-		print("Crane pos %s" % crane.global_position);
 		for node in anchor_proxies:
 			var offset_vec: Vector3 = crane.global_position - node.global_position;
-			print("distance %s" % (offset_vec.length_squared()));
 			if offset_vec.length_squared() > 50.0:
 				rigid_body_3d.apply_force(offset_vec * 2.5, node.global_position);
-			else:
-				print("idle");
 			rigid_body_3d.apply_force(Vector3.UP * -2.5)
 				
 func _on_area_attach_body_entered(body: PhysicsBody3D):

@@ -46,7 +46,6 @@ func check_statuses():
 		var i = items.size() - idx - 1;
 		if items[i].status != TickerItem.Status.STATUS_WAITING:
 			items[i].wait_time_left -= timer.wait_time;
-			print("Time left %s" % items[i].wait_time_left);
 			if items[i].wait_time_left < 0.0:
 				items.remove_at(i);
 				update = true;

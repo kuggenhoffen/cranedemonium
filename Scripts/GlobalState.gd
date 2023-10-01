@@ -11,10 +11,7 @@ var current_level_index: int = -1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Load levels");
 	levels = DirAccess.get_files_at(level_path);
-	for level in levels:
-		print("Loaded %s" % level);
 	if OS.has_feature("editor"):
 		# When running main scene from editor, load first level
 		var root = get_tree().root;
@@ -33,7 +30,6 @@ func get_levels():
 	return levels;
 
 func unload_scene(node: Node):
-	print("Unload scene %s" % node.name);
 	node.queue_free();
 	get_tree().root.remove_child(node);
 
@@ -42,9 +38,10 @@ func load_main_scene():
 	get_tree().root.add_child(current_level);
 	
 func load_level(level_index: int):
-	print("Loading level %d" % level_index);
 	current_level_index = level_index;
-	current_level.get_node("GameManager").load_level_path(level_path + levels[current_level_index]);
+	var game_manager: = current_level.get_node("GameManager");
+	game_manager.load_level_path(level_path + levels[current_level_index]);
+	game_manager.level_finished.connect(on_level_finished);
 
 func load_main_scene_and_level(level_index: int):
 	load_main_scene();
@@ -64,5 +61,13 @@ func load_main_menu():
 func reload_level():
 	if current_level != null && current_level_index != -1:
 		unload_and_switch_to_level(current_level, current_level_index);
-	else:
-		print("asd")
+
+func on_level_finished(level_time: float, total_containers: int, correctly_handled_containers: int):
+	pass
+
+func has_next_level():
+	return current_level_index != -1 && current_level_index < levels.size() - 1;
+
+func load_next_level():
+	unload_and_switch_to_level(current_level, current_level_index + 1);
+	

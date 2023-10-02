@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cju0t4at2pkpm"]
+
+[ext_resource type="Texture2D" uid="uid://c4ns4f0l7hgcj" path="res://Textures/patterns.png" id="1_kgyru"]
+
+[resource]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_kgyru")
+anisotropy_enabled = true

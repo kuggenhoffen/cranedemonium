@@ -4,10 +4,17 @@ var main_menu: PackedScene = preload("res://Scenes/main_menu.tscn")
 var main_scene: PackedScene = preload("res://Scenes/main.tscn");
 const level_path: String = "res://Prefabs/LevelBatches/";
 
+const data_filename: String = "user://data.json";
+
 var levels: PackedStringArray;
+var scores: Dictionary = {};
 
 var current_level: Node;
 var current_level_index: int = -1;
+
+
+var data = {};
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,10 +28,6 @@ func _ready():
 				current_level = game_manager.get_parent();
 				game_manager.load_level_path.call_deferred(level_path + levels[0])
 		
-			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func get_levels():
 	return levels;
@@ -63,11 +66,37 @@ func reload_level():
 		unload_and_switch_to_level(current_level, current_level_index);
 
 func on_level_finished(level_time: float, total_containers: int, correctly_handled_containers: int):
-	pass
+	save_score(correctly_handled_containers, total_containers);
 
 func has_next_level():
 	return current_level_index != -1 && current_level_index < levels.size() - 1;
 
 func load_next_level():
 	unload_and_switch_to_level(current_level, current_level_index + 1);
+
+func load_state_from_disk():
+	var file = FileAccess.open(data_filename, FileAccess.READ);
+	if file != null:
+		var json_data = file.get_as_text();
+		var json_reader = JSON.new()
+		var error = json_reader.parse(json_data);
+		if error == OK:
+			data = json_reader.data;
 	
+func save_state_to_disk():
+	var file = FileAccess.open(data_filename, FileAccess.WRITE);
+	var json_data = JSON.stringify(data);
+	file.store_string(json_data);
+
+func get_scores():
+	load_state_from_disk();
+	if data.has("scores"):
+		scores = data["scores"];
+	return scores;
+	
+func save_score(correct: int, total: int):
+	var level_name = levels[current_level_index].get_basename();
+	var score_dict: = {"score": correct, "total": total};
+	scores[level_name] = score_dict;
+	data["scores"] = scores;
+	save_state_to_disk();

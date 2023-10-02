@@ -10,7 +10,14 @@ var identifier: String;
 var crane: Node3D;
 var container_factory: Node;
 
-@export
+@onready var anchor_1 = $RigidBody3D/Anchor1
+@onready var anchor_2 = $RigidBody3D/Anchor2
+@onready var anchor_3 = $RigidBody3D/Anchor3
+@onready var anchor_4 = $RigidBody3D/Anchor4
+
+@onready var pickupable_anchor = $RigidBody3D/Anchor5
+
+
 var anchor_proxies: Array[Node3D];
 
 signal entered_attach_area(container);
@@ -23,6 +30,7 @@ func _ready():
 	if container_factory != null:
 		container_factory.request_id_and_texture(self);
 	rigid_body_3d.container = self;
+	anchor_proxies = [anchor_1, anchor_2, anchor_3, anchor_4];
 		
 func set_id_and_texture(id: String, tex: ImageTexture):
 	id_texture = tex;
@@ -30,11 +38,7 @@ func set_id_and_texture(id: String, tex: ImageTexture):
 	decal.texture_albedo = id_texture;
 	initialized.emit(self);
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if crane != null && false:
 		for node in anchor_proxies:
 			var offset_vec: Vector3 = crane.global_position - node.global_position;
@@ -42,15 +46,15 @@ func _physics_process(delta):
 				rigid_body_3d.apply_force(offset_vec * 2.5, node.global_position);
 			rigid_body_3d.apply_force(Vector3.UP * -2.5)
 				
-func _on_area_attach_body_entered(body: PhysicsBody3D):
+func _on_area_attach_body_entered(_body: PhysicsBody3D):
 	entered_attach_area.emit(self);
 
-func _on_area_attach_body_exited(body: PhysicsBody3D):
+func _on_area_attach_body_exited(_body: PhysicsBody3D):
 	exited_attach_area.emit(self);
 
-func attach(target: Node3D):
+func attach(_target: Node3D):
 	pass
 
-func detach(target: Node3D):
+func detach(_target: Node3D):
 	pass
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cskvjav1icpxq"]
+
+[ext_resource type="Script" path="res://Scripts/Rope.gd" id="1_ijqx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuwxj"]
+albedo_color = Color(0.054902, 0.0823529, 0.156863, 1)
+metallic_specular = 0.0
+
+[node name="Rope" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45259, 0)
+top_level = true
+size = Vector3(0.1, 0.1, 0.1)
+material = SubResource("StandardMaterial3D_wuwxj")
+script = ExtResource("1_ijqx8")

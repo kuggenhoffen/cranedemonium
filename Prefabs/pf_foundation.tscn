@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc5omyqp8628n"]
+
+[ext_resource type="PackedScene" uid="uid://b4vq6ewj7sgaq" path="res://Models/foundation.glb" id="1_je8dg"]
+[ext_resource type="Texture2D" uid="uid://dscig73ad25sn" path="res://Textures/concrete.png" id="2_i7pdx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmwe5"]
+albedo_texture = ExtResource("2_i7pdx")
+uv1_scale = Vector3(0.34, 0.34, 0.34)
+uv1_triplanar = true
+
+[node name="foundation" instance=ExtResource("1_je8dg")]
+
+[node name="Foundation" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cmwe5")

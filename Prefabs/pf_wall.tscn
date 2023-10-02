@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://x50vjd6v3kyp"]
+
+[ext_resource type="PackedScene" uid="uid://ciffied2g752" path="res://Models/wall.glb" id="1_qdfx2"]
+[ext_resource type="Material" uid="uid://b450wwafb4v1c" path="res://Materials/m_modulatable.tres" id="2_cvytr"]
+
+[node name="wall" instance=ExtResource("1_qdfx2")]
+
+[node name="Wall" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_cvytr")

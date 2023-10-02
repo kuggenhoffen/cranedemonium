@@ -10,10 +10,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func set_data(level_time: int, total: int, correct: int, has_next_level: bool, timeout: bool):
 	label.text = "You ran out of time" if timeout else "Level finished";
 	result_label.text = "Handled correctly %d out of %d cargo." % [correct, total];

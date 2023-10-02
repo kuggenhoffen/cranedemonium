@@ -10,11 +10,6 @@ func _ready():
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func capture(text: String):
 	label.text = text;
 	render_target_update_mode = SubViewport.UPDATE_ONCE;

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwdslu0qmtp24"]
+
+[ext_resource type="PackedScene" uid="uid://b77q8p4lnlo3l" path="res://Models/cone.glb" id="1_lqg0u"]
+[ext_resource type="Material" uid="uid://cowtil3lrdl4k" path="res://Materials/m_swatch.tres" id="2_jgclx"]
+
+[node name="cone" instance=ExtResource("1_lqg0u")]
+
+[node name="Cone" parent="." index="0"]
+material_override = ExtResource("2_jgclx")

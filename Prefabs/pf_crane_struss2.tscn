@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciq3yq453ro24"]
+
+[ext_resource type="PackedScene" uid="uid://cggrpxekx8ym4" path="res://Models/struss_roof.glb" id="1_pxvxw"]
+[ext_resource type="Material" uid="uid://6n1dlhpaqrjp" path="res://Materials/m_crane_struss.tres" id="2_rjol3"]
+
+[node name="struss_roof" instance=ExtResource("1_pxvxw")]
+
+[node name="StrussRoof" parent="." index="0"]
+material_override = ExtResource("2_rjol3")

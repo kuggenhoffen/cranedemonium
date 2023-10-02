@@ -31,7 +31,6 @@ func _input(event):
 			
 func show_menu(menu_type: MenuType):
 	hide_menu();
-	var showing_menu: bool = false;
 	match (menu_type):
 		MenuType.PAUSE:
 			get_tree().paused = true;
@@ -39,7 +38,6 @@ func show_menu(menu_type: MenuType):
 		MenuType.SCORE:
 			get_tree().paused = true;
 			score_menu_node.show_menu();
-			showing_menu = true;
 		MenuType.NONE:
 			get_tree().paused = false;
 	showing_menu_type = menu_type;

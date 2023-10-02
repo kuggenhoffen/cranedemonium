@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmxcx4c8hm205"]
+
+[ext_resource type="PackedScene" uid="uid://qj12i8vncpse" path="res://Models/conveyor.glb" id="1_7bivj"]
+[ext_resource type="Material" uid="uid://cowtil3lrdl4k" path="res://Materials/m_swatch.tres" id="2_mbnxw"]
+[ext_resource type="Script" path="res://Scripts/ConveyorAnimator.gd" id="4_17h22"]
+[ext_resource type="Material" uid="uid://ssosdwpoy6qq" path="res://Materials/m_conveyor.tres" id="4_bmvno"]
+
+[node name="conveyor" instance=ExtResource("1_7bivj")]
+script = ExtResource("4_17h22")
+
+[node name="Conveyor" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_mbnxw")
+surface_material_override/1 = ExtResource("4_bmvno")

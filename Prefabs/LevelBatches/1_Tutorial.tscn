@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://baakvjqyoyn6e"]
+
+[ext_resource type="Script" path="res://Scripts/Batch.gd" id="1_o5udr"]
+[ext_resource type="PackedScene" uid="uid://b2dkvcjvi75s0" path="res://Prefabs/container.tscn" id="2_nj2d6"]
+
+[node name="Batch" type="Node3D"]
+script = ExtResource("1_o5udr")
+
+[node name="Container" parent="." instance=ExtResource("2_nj2d6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.50335, 2.64026, 0.69137)

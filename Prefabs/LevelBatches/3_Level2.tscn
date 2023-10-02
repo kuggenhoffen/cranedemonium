@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqxcl0d2xn7y5"]
+
+[ext_resource type="Script" path="res://Scripts/Batch.gd" id="1_64hfw"]
+[ext_resource type="PackedScene" uid="uid://b2dkvcjvi75s0" path="res://Prefabs/container.tscn" id="2_0elkm"]
+[ext_resource type="PackedScene" uid="uid://f3r4tdswqc44" path="res://Prefabs/pf_box.tscn" id="3_d2px1"]
+
+[node name="Batch" type="Node3D"]
+script = ExtResource("1_64hfw")
+
+[node name="Container" parent="." instance=ExtResource("2_0elkm")]
+transform = Transform3D(0.951294, 0, 0.308286, 0, 1, 0, -0.308286, 0, 0.951294, -2.96001, 2.64026, 0.0683188)
+
+[node name="Container3" parent="." instance=ExtResource("2_0elkm")]
+transform = Transform3D(-0.993905, 0, 0.110237, 0, 1, 0, -0.110237, 0, -0.993905, 4.2933, 2.64026, 2.21977)
+
+[node name="Container2" parent="." instance=ExtResource("2_0elkm")]
+transform = Transform3D(0.54322, 0.495557, -0.677743, -0.0866289, 0.836004, 0.541842, 0.83511, -0.235627, 0.497064, 2.05176, 5.29386, -6.72306)
+
+[node name="box" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23535, 6.14026, 3.41566)
+
+[node name="box3" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.996047, 0, 0.0888248, 0, 1, 0, -0.0888248, 0, 0.996047, 3.3865, 6.14026, 3.08124)
+
+[node name="box4" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.996898, 0, -0.0787027, 0, 1, 0, 0.0787027, 0, 0.996898, 2.54242, 8.18088, 3.15652)
+
+[node name="box5" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.886753, 0, -0.462244, 0, 1, 0, 0.462244, 0, 0.886753, -0.286292, 8.18088, 3.35434)
+
+[node name="box6" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.886753, 0, -0.462244, 0, 1, 0, 0.462244, 0, 0.886753, -0.286292, 8.18088, 3.35434)
+
+[node name="box2" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.974769, 0, -0.223216, 0, 1, 0, 0.223216, 0, 0.974769, 1.09563, 6.14026, 3.68485)
+
+[node name="box7" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.925117, 0, 0.379682, 0, 1, 0, -0.379682, 0, 0.925117, -1.23535, 6.14026, 0.459223)
+
+[node name="box8" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.874086, 0, -0.485771, 0, 1, 0, 0.485771, 0, 0.874086, 3.3865, 6.14026, 0.124809)
+
+[node name="box9" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.949447, 0, 0.313926, 0, 1, 0, -0.313926, 0, 0.949447, 2.54242, 8.18088, 0.200082)
+
+[node name="box10" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.886753, 0, -0.462244, 0, 1, 0, 0.462244, 0, 0.886753, -0.286292, 8.18088, 0.397905)
+
+[node name="box11" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.886753, 0, -0.462244, 0, 1, 0, 0.462244, 0, 0.886753, -0.286292, 8.18088, 0.397905)
+
+[node name="box12" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.977068, 0, 0.212928, 0, 1, 0, -0.212928, 0, 0.977068, 0.785592, 1.12482, -1.14196)
+
+[node name="box13" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.996947, 0, 0.0780763, 0, 1, 0, -0.0780763, 0, 0.996947, 0.785592, 3.13511, -1.14196)
+
+[node name="box14" parent="." instance=ExtResource("3_d2px1")]
+transform = Transform3D(0.997011, 0, -0.0772585, 0, 1, 0, 0.0772585, 0, 0.997011, 0.888861, 5.13927, -0.985725)

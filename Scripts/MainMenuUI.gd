@@ -22,13 +22,9 @@ func _ready():
 	btn_options.pressed.connect(on_options_pressed);
 	btn_quit.pressed.connect(on_quit_pressed);
 	
-	level_select.update_level_list(global_state.get_levels());
+	level_select.update_level_list(global_state.get_levels(), global_state.get_scores());
 	
 	show_main_menu();
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func on_quit_pressed():
 	get_tree().quit()

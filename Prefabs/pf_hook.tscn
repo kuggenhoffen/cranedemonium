@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnpa26o7p17yj"]
+
+[ext_resource type="PackedScene" uid="uid://b6u5y5mgnvndu" path="res://Models/hook.glb" id="1_yl4b2"]
+[ext_resource type="Material" uid="uid://cju0t4at2pkpm" path="res://Materials/m_patterns.tres" id="2_gvgmo"]
+[ext_resource type="Script" path="res://Scripts/Hook.gd" id="2_lbfsx"]
+[ext_resource type="Material" uid="uid://cowtil3lrdl4k" path="res://Materials/m_swatch.tres" id="3_ejhjr"]
+[ext_resource type="Material" uid="uid://cqk5jbxmyti8s" path="res://Materials/m_rope.tres" id="3_jkhpu"]
+
+[node name="hook" instance=ExtResource("1_yl4b2")]
+script = ExtResource("2_lbfsx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.34, 12.529, -1.48619e-08)
+size = Vector3(0.1, 25, 0.1)
+material = ExtResource("3_jkhpu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.34, 12.529, 1.48619e-08)
+size = Vector3(0.1, 25, 0.1)
+material = ExtResource("3_jkhpu")
+
+[node name="Hook" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_gvgmo")
+surface_material_override/1 = ExtResource("3_ejhjr")
+
+[node name="RopeProxyBottom" type="Node3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.43209, 0)

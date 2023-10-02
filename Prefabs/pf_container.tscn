@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhxwkkiy21ya1"]
+
+[ext_resource type="PackedScene" uid="uid://e3j7ln8fdsc" path="res://Models/container.glb" id="1_k3lme"]
+[ext_resource type="Material" uid="uid://b450wwafb4v1c" path="res://Materials/m_modulatable.tres" id="2_i0r5k"]
+[ext_resource type="Material" uid="uid://cowtil3lrdl4k" path="res://Materials/m_swatch.tres" id="3_6m5ja"]
+
+[node name="container" instance=ExtResource("1_k3lme")]
+
+[node name="Container" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_i0r5k")
+surface_material_override/1 = ExtResource("3_6m5ja")

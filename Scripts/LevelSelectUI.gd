@@ -13,10 +13,6 @@ func _ready():
 	item_list.focus_exited.connect(on_focus_exited);
 	item_list.focus_entered.connect(on_focus_entered);
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func on_item_activated(index: int):
 	print("selected %d, unloadnig %s" % [index, owner.name]);
 	level_selected.emit(index);
@@ -27,8 +23,16 @@ func on_focus_exited():
 func on_focus_entered():
 	item_list.select(0);
 
-func update_level_list(levels: PackedStringArray):
+func update_level_list(levels: PackedStringArray, scores: Dictionary):
 	item_list.clear();
 	for level in levels:
-		item_list.add_item(level.get_basename());
+		var level_name: String = level.get_basename();
+		var display_name: String = level_name;
+		if display_name.contains("_"):
+			display_name = level_name.split("_")[1];
+		var score_text: String = "";
+		if scores.has(level_name):
+			var level_score = scores[level_name];
+			score_text = " - %d/%d" % [level_score["score"], level_score["total"]];
+		item_list.add_item(display_name + score_text);
 

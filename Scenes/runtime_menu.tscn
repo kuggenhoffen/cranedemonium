@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/MenuUINode.gd" id="3_b8o0h"]
 [ext_resource type="FontVariation" uid="uid://cis2ryintpk44" path="res://Styles/button_font_variation.tres" id="5_88vto"]
 [ext_resource type="StyleBox" uid="uid://gjmjbuo2je5x" path="res://Styles/empty_box.tres" id="6_hokkw"]
-[ext_resource type="Script" path="res://Scenes/ScoreMenuUINode.gd" id="6_jlvgd"]
+[ext_resource type="Script" path="res://Scripts/ScoreMenuUINode.gd" id="6_qqwb6"]
 
 [sub_resource type="Gradient" id="Gradient_mqu3c"]
 offsets = PackedFloat32Array(0, 0.363043, 1)
@@ -183,7 +183,7 @@ grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gngdv")
 
 [node name="ScoreMenuNode" type="Node" parent="RuntimeMenuUI/Node" node_paths=PackedStringArray("focus_control")]
-script = ExtResource("6_jlvgd")
+script = ExtResource("6_qqwb6")
 focus_control = NodePath("RuntimeMenu/BtnNextLevel")
 
 [node name="RuntimeMenu" type="BoxContainer" parent="RuntimeMenuUI/Node/ScoreMenuNode"]

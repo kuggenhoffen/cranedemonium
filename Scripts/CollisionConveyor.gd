@@ -9,11 +9,8 @@ func _ready():
 	pass # Replace with function body.
 	direction = transform.basis.x;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for path in bodies:
 		var rb: RigidBody3D = bodies[path];
 		var dot: float = rb.linear_velocity.dot(direction);

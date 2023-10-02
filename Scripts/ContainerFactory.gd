@@ -24,7 +24,7 @@ func generate_id():
 	return id
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var cont: Node = container_queue.pop_back()
 	if cont != null:
 		var id: String = generate_id();

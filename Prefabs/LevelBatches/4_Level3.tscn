@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cknx3khblal8h"]
+
+[ext_resource type="Script" path="res://Scripts/Batch.gd" id="1_2l1kg"]
+[ext_resource type="PackedScene" uid="uid://b2dkvcjvi75s0" path="res://Prefabs/container.tscn" id="2_mqwcb"]
+
+[node name="Batch" type="Node3D"]
+script = ExtResource("1_2l1kg")
+LevelTimeLimitSecs = 60
+
+[node name="Container" parent="." instance=ExtResource("2_mqwcb")]
+transform = Transform3D(0.707107, -0.707107, 0, -3.09086e-08, -3.09086e-08, -1, 0.707107, 0.707107, -4.37114e-08, -2.60604, 4.99765, 1.16059)
+
+[node name="Container3" parent="." instance=ExtResource("2_mqwcb")]
+transform = Transform3D(-0.5, 0.866025, 0, 3.78552e-08, 2.18557e-08, 1, 0.866026, 0.5, -4.37114e-08, 2.07034, 4.99765, 4.44225)
+
+[node name="Container4" parent="." instance=ExtResource("2_mqwcb")]
+transform = Transform3D(-0.971574, 0.236736, 0, 1.03481e-08, 4.24688e-08, 1, 0.236736, 0.971574, -4.37114e-08, 2.76031, 4.99765, -2.10987)

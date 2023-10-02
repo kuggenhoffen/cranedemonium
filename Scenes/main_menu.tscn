@@ -187,6 +187,7 @@ theme_override_styles/focus = ExtResource("2_7tuua")
 text = "Start"
 
 [node name="BtnOptions" type="Button" parent="MainMenuUI/Node/MainMenuNode/MainMenu"]
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../BtnStart")
 focus_neighbor_top = NodePath("../BtnStart")

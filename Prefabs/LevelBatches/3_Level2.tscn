@@ -6,6 +6,7 @@
 
 [node name="Batch" type="Node3D"]
 script = ExtResource("1_64hfw")
+LevelTimeLimitSecs = 75
 
 [node name="Container" parent="." instance=ExtResource("2_0elkm")]
 transform = Transform3D(0.951294, 0, 0.308286, 0, 1, 0, -0.308286, 0, 0.951294, -2.96001, 2.64026, 0.0683188)

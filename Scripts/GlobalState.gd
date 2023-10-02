@@ -18,7 +18,9 @@ var data = {};
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	levels = DirAccess.get_files_at(level_path);
+	var temp_levels = DirAccess.get_files_at(level_path);
+	for lev in temp_levels:
+		levels.append(lev.trim_suffix(".remap"))
 	if OS.has_feature("editor"):
 		# When running main scene from editor, load first level
 		var root = get_tree().root;
@@ -30,6 +32,7 @@ func _ready():
 		
 
 func get_levels():
+	print(levels);
 	return levels;
 
 func unload_scene(node: Node):
@@ -43,7 +46,7 @@ func load_main_scene():
 func load_level(level_index: int):
 	current_level_index = level_index;
 	var game_manager: = current_level.get_node("GameManager");
-	game_manager.load_level_path(level_path + levels[current_level_index]);
+	game_manager.load_level_path(level_path + levels[current_level_index].trim_suffix(".remap"));
 	game_manager.level_finished.connect(on_level_finished);
 
 func load_main_scene_and_level(level_index: int):
